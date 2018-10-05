@@ -6,9 +6,10 @@ import org.junit.Test
 
 /** Solution [Riddle7Solution] */
 class Riddle7Test {
-  @Test fun solve() {
-    Riddle7.solve(Observable.just(1, 2, 3, 1, 2, 4, 4, 5, 4))
-        .test()
-        .assertResult(1, 2, 3, 4, 5)
-  }
+    @Test
+    fun solve() {
+        Riddle7.solve(Observable.just(1, 2, 3, 1, 2, 4, 4, 5, 4))
+                .test()
+                .assertResult(1, 2, 3, 4, 5)
+    }
 }
