@@ -6,9 +6,10 @@ import org.junit.Test
 
 /** Solution [Riddle3Solution] */
 class Riddle3Test {
-  @Test fun solve() {
-    Riddle3.solve(Observable.range(0, 10))
-        .test()
-        .assertResult(0, 2, 4, 6, 8)
-  }
+    @Test
+    fun solve() {
+        Riddle3.solve(Observable.range(0, 10))
+                .test()
+                .assertResult(0, 2, 4, 6, 8)
+    }
 }
