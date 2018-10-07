@@ -10,25 +10,27 @@ import java.util.concurrent.TimeUnit.SECONDS
 
 /** Solution [Riddle9Solution] */
 class Riddle9Test {
-  @get:Rule val rxRule = RxRule()
+    @get:Rule
+    val rxRule = RxRule()
 
-  @Test fun solve() {
-    val trigger = PublishSubject.create<Unit>()
-    val main = Observable.interval(1, SECONDS).map { Unit }
+    @Test
+    fun solve() {
+        val trigger = PublishSubject.create<Unit>()
+        val main = Observable.interval(1, SECONDS).map { Unit }
 
-    val o = Riddle9.solve(main, trigger)
-        .test()
-        .assertEmpty()
+        val o = Riddle9.solve(main, trigger)
+                .test()
+                .assertEmpty()
 
-    rxRule.advanceTimeBy(1, SECONDS)
-    o.assertValueCount(1)
+        rxRule.advanceTimeBy(1, SECONDS)
+        o.assertValueCount(1)
 
-    rxRule.advanceTimeBy(15, SECONDS)
-    o.assertValueCount(16)
+        rxRule.advanceTimeBy(15, SECONDS)
+        o.assertValueCount(16)
 
-    trigger.onNext(Unit)
+        trigger.onNext(Unit)
 
-    rxRule.advanceTimeBy(15, SECONDS)
-    o.assertValueCount(16)
-  }
+        rxRule.advanceTimeBy(15, SECONDS)
+        o.assertValueCount(16)
+    }
 }
