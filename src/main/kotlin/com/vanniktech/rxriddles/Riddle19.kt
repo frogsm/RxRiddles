@@ -11,7 +11,7 @@ object Riddle19 {
      */
     fun solve(interaction: Interaction): Observable<Int> {
         return Observable.create { emitter ->
-            emitter.setCancellable { interaction.listener }
+            emitter.setCancellable { interaction.listener = null }
             interaction.listener = {
                 if (!emitter.isDisposed) emitter.onNext(it)
             }
